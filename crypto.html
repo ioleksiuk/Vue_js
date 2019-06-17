@@ -17,7 +17,7 @@
 
 <script type="text/javascript">
 	Vue.component('ComponentCrypto', {
-	  template: '<p>Enter cryptocurrency ticker to get the price:<select v-model="question "><option v-for="ticker in tickers"> {{ ticker.currency }} </option></select></p><p>{{ answer }}</p></div>',
+	  template: '<div id="watch-example"><p>Enter cryptocurrency ticker to get the price:<select v-model="question "><option v-for="ticker in tickers"> {{ ticker.currency }} </option></select></p><p>{{ answer }}</p></div>',
 	  data: function() {
 	    return {
 		    question: '',
