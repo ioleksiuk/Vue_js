@@ -1,15 +1,24 @@
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Counter</title>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js">
 </script><script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 
+<h1>Here it should be</h1>
 <div id="components-demo">
-  <CryptoComponent></CryptoComponentr>
+  <ComponentCrypto></ComponentCrypto>
 </div>
 
 <script type="text/javascript">
-	Vue.component('CryptoComponent', {
+	Vue.component('ComponentCrypto', {
 	  template: '<p>Enter cryptocurrency ticker to get the price:<select v-model="question "><option v-for="ticker in tickers"> {{ ticker.currency }} </option></select></p><p>{{ answer }}</p></div>',
-	  data(){
+	  data: function() {
 	    return {
 		    question: '',
 		    answer: '',
@@ -53,5 +62,10 @@
 	    }
 	}})
 
-	new Vue({ el: '#components-demo'})
+
+	new Vue({ el: '#components-demo' })
+
 </script>
+</body>
+</html>
+
