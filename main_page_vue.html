@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Play with vue JS</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    html {
+      box-sizing: border-box;
+      background: #ffc600;
+      font-family: 'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+    }
+    
+    body {
+      margin: 0;
+    }
+    
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    .panels {
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+    }
+    .panel {
+      background: #6B0F9C;
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+      color: white;
+      text-align: center;
+      align-items: center;
+      /* Safari transitionend event.propertyName === flex */
+      /* Chrome + FF transitionend event.propertyName === flex-grow */
+      transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+      font-size: 20px;
+      background-size: cover;
+      background-position: center;
+      flex: 1;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
+    .panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
+    .panel3 { background-image:url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d); }
+    .panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
+    .panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
+    /* Flex Items */
+    .panel > * {
+      margin: 0;
+      width: 100%;
+      transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .panel > *:first-child { transform: translateY(-100%); }
+    .panel.open-active > *:first-child { transform: translateY(0); }
+    .panel > *:last-child { transform: translateY(100%); }
+    .panel.open-active > *:last-child { transform: translateY(0); }
+    .panel p {
+      text-transform: uppercase;
+      font-family: 'Amatic SC', cursive;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+      font-size: 2em;
+    }
+    
+    .panel p:nth-child(2) {
+      font-size: 4em;
+    }
+    .panel.open {
+      flex: 5;
+      font-size: 40px;
+    }
+    
+    @media only screen and (max-width: 600px) {
+      .panel p {
+        font-size: 1em;
+      }
+    }
+  </style>
+
+  <div id="app" class="panels">
+    <div
+        class="panel panel1"
+        v-bind:class="{ open-active: isActive1 }"
+        v-on:click="isActive1 = true">
+        <p v-for="text in panel_1"> {{ text.p }} </p>
+    </div>
+
+    <div 
+        class="panel panel2"
+        v-bind:class="{ open-active: isActive2 }"
+        v-on:click="isActive2 = true">
+        <p v-for="text in panel_2"> {{ text.p }} </p>
+    </div>
+    <div 
+        class="panel panel3"
+        <!-- v-bind:class="{ open-active: isActive3 }"
+        v-on:click="isActive3 = true">
+        <p v-for="text in panel_3"> {{ text.p }} </p>
+    </div>
+
+    <div 
+        class="panel panel4"
+         <!-- v-bind:class="{ open-active: isActive4 }"
+        v-on:click="isActive4 = true">
+
+      <p v-for="text in panel_4"> {{ text.p }} </p>
+    </div>
+
+    <div 
+        class="panel panel5"
+        <!-- v-bind:class="{ open-active: isActive5 }"
+        v-on:click="isActive5 = true">
+
+      <p v-for="text in panel_5"> {{ text.p }} </p>
+    </div>
+  </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    //const panels = document.querySelectorAll('.panel');
+
+    // function toggleOpen() {
+    //   console.log('Hello');
+    //   this.classList.toggle('open');
+    // }
+
+    // function toggleActive(e) {
+    //   console.log(e.propertyName);
+    //   if (e.propertyName.includes('flex')) {
+    //     this.classList.toggle('open-active');
+    //   }
+    // }
+
+    // panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    // panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+
+  var app7 = new Vue({
+    el: '#app',
+    data: {
+      panel_1: [{ p: 'Hey'}, {p:'Lets'}, {p:'Dance'}],
+      panel_2: [{ p: 'Give'},{p:'Take'}, {p:'Receive'}],
+      panel_3: [{ p: 'Experience'}, {p:'It'}, {p:'Today'}],
+      panel_4: [{ p: 'Give'}, {p:'All'}, {p:'You can'}],
+      panel_5: [{ p: 'Life'}, {p:'In'}, {p:'Motion'}],
+      isActive1: false,
+      isActive2: false,
+      isActive3: false,
+      isActive4: false,
+      isActive5: false
+    }
+  })
+  </script>
+
+</body>
+</html>
